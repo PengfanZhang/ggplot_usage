@@ -2,9 +2,7 @@
 
 ----
 
-<p align="center">
-<img src="/Users/pengfan/Desktop/1625395568128.jpg", width =500, height=300>
-</p>
+![image](https://user-images.githubusercontent.com/54542240/124382386-771e2900-dcc7-11eb-86c1-1aaec5d1d1bf.png)
 
 This tutorial shows how to plot the above figure with ggplot2
 
@@ -67,7 +65,7 @@ y_text <- seq(ncol(triangle_dat), 1)
 t_text_dat <- data.frame(text=rev(colnames(triangle_dat)), x=x_text, y=y_text)
 
 ```
-<img src="/Users/pengfan/Desktop/WX20210704-125405.png">
+![image](https://user-images.githubusercontent.com/54542240/124382398-869d7200-dcc7-11eb-9ae3-78776758a7cc.png)
 
 ## plot points
 ```{r}
@@ -125,7 +123,8 @@ point_corr$sig <- sig_p_con1
 p <- p + geom_point(aes(x=x, y=y, fill=point), point_dat, size=4, shape=21, color="white") + scale_fill_manual(values=c("#f60404", "#7a7a7a", "#99999b", "#000000", "#457b9d","#d8d8d8", "#fcfd0c")) + geom_text(aes(x=x, y=y-0.2), point_dat, label=point_dat$point, family = "Times") + geom_curve(aes(x=x, y=y, xend=x2, yend=y2, color=as.factor(color)), point_corr[which(point_corr$sig=="Sig"), ], size=point_corr$corr[which(point_corr$sig=="Sig")], curvature = -0.2) + geom_curve(aes(x=x, y=y, xend=x2, yend=y2, color=as.factor(color)), point_corr[which(point_corr$sig=="NS"), ], size=point_corr$corr[which(point_corr$sig=="NS")], curvature = -0.2, linetype=2)
 
 ```
-<img src="/Users/pengfan/Desktop/WX20210704-125548.png">
+![image](https://user-images.githubusercontent.com/54542240/124382410-92893400-dcc7-11eb-8cf6-a263a5b0044c.png)
+
 
 ## combine two plots
 ```{r}
@@ -161,4 +160,4 @@ p_t_corr$sig <- Sig_p_t_tab$value
 p + geom_curve(aes(x=x, y=y, xend=xend-0.2, yend=yend, color=as.factor(color)), p_t_corr[which(p_t_corr$sig==1), ], size=abs(p_t_corr$value[which(p_t_corr$sig==1)]), curvature = 0.1) + geom_curve(aes(x=x, y=y, xend=xend-0.2, yend=yend, color=as.factor(color)), p_t_corr[which(p_t_corr$sig==-1), ], size=abs(p_t_corr$value[which(p_t_corr$sig==-1)]), curvature = 0.1, linetype=2) + geom_text(aes(x=x, y=y), t_text_dat, label=t_text_dat$text, family="Times") + theme_void() + scale_color_discrete(name="Correlation", labels=c("Positive", "Negative")) + theme(text=element_text(family="Times"))
 
 ```
-<img src="/Users/pengfan/Desktop/1625395568128.jpg">
+![image](https://user-images.githubusercontent.com/54542240/124382386-771e2900-dcc7-11eb-86c1-1aaec5d1d1bf.png)
